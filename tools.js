@@ -1,128 +1,55 @@
 module.exports = {
-  convertTextToEmoji: function(txt)
-  {
-    var emojitxt = "";
-    for (var x = 0; x < txt.length; x++)
-    {
-      if (txt.charCodeAt(x) >= 65 && txt.charCodeAt(x) <= 90) {
-        emojitxt += ":regional_indicator_"+ txt.charAt(x).toLowerCase() +": ";
-      }
+	// Fonction pour convertir du texte en emoji pour discord. On convertis en texte qui est ensuite lu par discord, et pas directement les characteres unicodes
+	convertTextToEmoji: function(txt)
+	{
+		var emojitxt = "";
+		for (var x = 0; x < txt.length; x++)
+		{
+			// Check majuscule
+			if (txt.charCodeAt(x) >= 65 && txt.charCodeAt(x) <= 90) {
+				emojitxt += ":regional_indicator_"+ txt.charAt(x).toLowerCase() +": ";
+			}
+			// Check minuscule
+			else if (txt.charCodeAt(x) >= 97 && txt.charCodeAt(x) <= 122) {
+				emojitxt += ":regional_indicator_"+ txt.charAt(x) +": ";
+			}
+			// Check number
+			else if (txt.charCodeAt(x) >= 48 && txt.charCodeAt(x) <= 57) {
+				emojitxt += convertIntToEmoji(txt.charAt(x));
+			}
+			// Drop unknown char
+			else {
+				//console.log("drop");
+			}
+		}
 
-      else if (txt.charCodeAt(x) >= 97 && txt.charCodeAt(x) <= 122) {
-        emojitxt += ":regional_indicator_"+ txt.charAt(x) +": ";
-      }
-
-      else if (txt.charCodeAt(x) >= 48 && txt.charCodeAt(x) <= 57) {
-        var value;
-
-        switch (txt.charAt(x)) {
-          case "1":
-            value = ":one: "
-            break;
-          case "2":
-            value = ":two: "
-            break;
-          case "3":
-            value = ":three: "
-            break;
-          case "4":
-            value = ":four: "
-            break;
-          case "5":
-            value = ":five: "
-            break;
-          case "6":
-            value = ":six: "
-            break;
-          case "7":
-            value = ":seven: "
-            break;
-          case "8":
-            value = ":eight: "
-            break;
-          case "9":
-            value = ":nine: "
-            break;
-          case "0":
-            value = ":zero: "
-            break;
-        }
-
-        emojitxt += value;
-      }
-
-      else if (txt.charCodeAt(x) = 32) {
-        emojitxt +=  "                   ";
-        console.log("espace");
-      }
-    }
-
-    return emojitxt;
-  }
+		return emojitxt;
+	}
 
 };
 
 
-// Fonction pour convertir du texte en emoji pour discord. On convertis en texte qui est ensuite lu par discord, et pas directement les characteres unicodes
-function convertTextToEmoji(txt)
-{
-  var emojitxt = "";
-  for (var x = 0; x < txt.length; x++)
-  {
-    if (txt.charCodeAt(x) > 65 && txt.charCodeAt(x) < 90) {
-      emojitxt += ":regional_indicator_"+ txt.charAt(x) +": ";
-    }
-
-    else if (txt.charCodeAt(x) > 97 && txt.charCodeAt(x) < 122) {
-      emojitxt += ":regional_indicator_"+ txt.charAt(x) +": ";
-    }
-
-    else if (txt.charCodeAt(x) > 48 && txt.charCodeAt(x) < 57) {
-      var value;
-
-      switch (txt.charAt(x)) {
-        case "1":
-          value = ":one: "
-          break;
-        case "2":
-          value = ":two: "
-          break;
-        case "3":
-          value = ":three: "
-          break;
-        case "4":
-          value = ":four: "
-          break;
-        case "5":
-          value = ":five: "
-          break;
-        case "6":
-          value = ":six: "
-          break;
-        case "7":
-          value = ":seven: "
-          break;
-        case "8":
-          value = ":eight: "
-          break;
-        case "9":
-          value = ":nine: "
-          break;
-        case "0":
-          value = ":zero: "
-          break;
-      }
-
-      emojitxt += value;
-    }
-
-    else if (txt.charCodeAt(x) = 32) {
-      emojitxt +=  "   ";
-    }
-  }
-
-  return emojitxt;
+function convertIntToEmoji(txt){
+	switch (txt) {
+		case "1":
+			return ":one: ";
+		case "2":
+			return ":two: ";
+		case "3":
+			return ":three: ";
+		case "4":
+			return ":four: ";
+		case "5":
+			return ":five: ";
+		case "6":
+			return ":six: ";
+		case "7":
+			return ":seven: ";
+		case "8":
+			return ":eight: ";
+		case "9":
+			return ":nine: ";
+		default:
+			return ":zero: ";
+	}
 }
-
-
-console.log(convertTextToEmoji("tEst6"));
