@@ -32,7 +32,7 @@ bot.on('message', message => {
     var txt = message.content.split(" ").slice(1);
 
     for (var i = 0; i < txt.length; i++) {
-      returnedMessage += tools.convertTextToEmoji(txt[i]);
+      returnedMessage += tools.convertTextToEmoji(txt[i]) + "     ";
     }
 
     message.channel.sendMessage(returnedMessage);

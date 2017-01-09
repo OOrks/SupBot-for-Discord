@@ -53,6 +53,7 @@ module.exports = {
 
       else if (txt.charCodeAt(x) = 32) {
         emojitxt +=  "                   ";
+        console.log("espace");
       }
     }
 
