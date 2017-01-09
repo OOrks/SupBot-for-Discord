@@ -32,8 +32,17 @@ bot.on('message', message => {
     var txt = message.content.split(" ").slice(1);
 
     for (var i = 0; i < txt.length; i++) {
-      returnedMessage += tools.convertTextToEmoji(txt[i]) + "     ";
+		var tempConvert = tools.convertTextToEmoji(txt[i])
+		if (tempConvert != ""){
+			returnedMessage += tempConvert + "     ";
+		}
     }
+	
+	if (returnedMessage == "") return;
+	if (returnedMessage.length > 2000){
+		message.channel.sendMessage("Trop long j'ai la flemme.");
+		return;
+	}
 
     message.channel.sendMessage(returnedMessage);
     console.log("[LOG]emojifying done");

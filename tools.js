@@ -3,31 +3,54 @@ module.exports = {
 	convertTextToEmoji: function(txt)
 	{
 		var emojitxt = "";
-		for (var x = 0; x < txt.length; x++)
-		{
-			// Check majuscule
-			if (txt.charCodeAt(x) >= 65 && txt.charCodeAt(x) <= 90) {
-				emojitxt += ":regional_indicator_"+ txt.charAt(x).toLowerCase() +": ";
-			}
-			// Check minuscule
-			else if (txt.charCodeAt(x) >= 97 && txt.charCodeAt(x) <= 122) {
-				emojitxt += ":regional_indicator_"+ txt.charAt(x) +": ";
-			}
-			// Check number
-			else if (txt.charCodeAt(x) >= 48 && txt.charCodeAt(x) <= 57) {
-				emojitxt += convertIntToEmoji(txt.charAt(x));
-			}
-			// Drop unknown char
-			else {
-				//console.log("drop");
+		if (checkCustomEmote(txt)){
+			console.log("emote detected");
+			//emojitxt = extractEmote(txt);
+		}
+		else {
+			for (var x = 0; x < txt.length; x++)
+			{
+				// Check majuscule
+				if (txt.charCodeAt(x) >= 65 && txt.charCodeAt(x) <= 90) {
+					emojitxt += ":regional_indicator_"+ txt.charAt(x).toLowerCase() +": ";
+				}
+				// Check minuscule
+				else if (txt.charCodeAt(x) >= 97 && txt.charCodeAt(x) <= 122) {
+					emojitxt += ":regional_indicator_"+ txt.charAt(x) +": ";
+				}
+				// Check number
+				else if (txt.charCodeAt(x) >= 48 && txt.charCodeAt(x) <= 57) {
+					emojitxt += convertIntToEmoji(txt.charAt(x));
+				}
+				// Drop unknown char
+				else {
+					//console.log("drop");
+				}
 			}
 		}
-
 		return emojitxt;
 	}
 
 };
 
+function checkCustomEmote(txt){
+	return (txt.charAt(0) == "<" && txt.charAt(txt.length-1) == ">" );
+};
+
+function extractEmote(emote){
+	var result = "";
+	var start = false;
+	for (var x = 0; x < emote.length; x++)
+	{
+		if (emote.charAt(x) == ":") {
+			start = !start;
+			result +=":"
+		} else if (start) {
+			result +=emote.charAt(x);
+		}
+	}
+	return result;
+}
 
 function convertIntToEmoji(txt){
 	switch (txt) {
