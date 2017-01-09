@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const tools = require('./tools');
 
 
 
@@ -15,13 +16,27 @@ bot.on('message', message => {
   if (!message.content.startsWith(prefix) || message.author.bot)
   {
     return;
-    console.log("[LOG]Command found");
+    console.log("[LOG]No Command found");
   }
 
   if (message.content === prefix + "ping")
   {
     message.channel.sendMessage("pong");
     console.log("[LOG]Ping done");
+  }
+
+  if (message.content.startsWith(prefix + "emojify"))
+  {
+    var returnedMessage = "";
+
+    var txt = message.content.split(" ").slice(1);
+
+    for (var i = 0; i < txt.length; i++) {
+      returnedMessage += tools.convertTextToEmoji(txt[i]) + "     ";
+    }
+
+    message.channel.sendMessage(returnedMessage);
+    console.log("[LOG]emojifying done");
   }
 })
 

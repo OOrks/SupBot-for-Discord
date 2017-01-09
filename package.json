@@ -1,15 +1,15 @@
 {
-  "name": "botdiscord",
+  "name": "SupBot",
   "version": "1.0.0",
   "description": "bot for discord",
   "main": "main.js",
   "scripts": {
-    "test": "botdiscord test",
+    "test": "supbot test",
     "start": "node main.js"
   },
   "author": "Askerad",
   "license": "UNLICENSED",
-  "depedency": {
-    "discord.js" : "11.0.0"
+  "dependencies": {
+    "discord.js": "^11.0.0"
   }
 }
