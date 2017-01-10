@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const tools = require('./tools');
+const authorisations = require('./commandChannels.json')
 
-
-
+console.log(authorisations);
 
 bot.on('ready', () =>{
   console.log("[LOG]I am ready");
@@ -37,7 +37,7 @@ bot.on('message', message => {
 			returnedMessage += tempConvert + "     ";
 		}
     }
-	
+
 	if (returnedMessage == "") return;
 	if (returnedMessage.length > 2000){
 		message.channel.sendMessage("Trop long j'ai la flemme.");

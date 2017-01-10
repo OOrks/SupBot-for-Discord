@@ -1,0 +1,13 @@
+{
+	"commands" :[
+		{
+			"name": "ping",
+			"authorisation": "all"
+		},
+		{
+			"name": "emojify",
+			"authorisation": "all"
+		}
+	]
+
+}
