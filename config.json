@@ -1,0 +1,25 @@
+{
+	"commands" :[
+		{
+			"name": "ping",
+			"authorisationChannels": "dev"
+		},
+		{
+			"name": "emojify",
+			"authorisationChannels": "all"
+		},
+		{
+			"name": "channelid",
+			"authorisationChannels": "all"
+		}
+	],
+	"channels":
+		{
+			"admin": [],
+			"dev": [
+				"268088526921400320"
+			]
+		}
+
+
+}
