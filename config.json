@@ -2,7 +2,7 @@
 	"commands" :[
 		{
 			"name": "ping",
-			"authorisationChannels": "dev"
+			"authorisationChannels": "all"
 		},
 		{
 			"name": "emojify",
@@ -11,6 +11,10 @@
 		{
 			"name": "channelid",
 			"authorisationChannels": "all"
+		},
+		{
+			"name": "reloadconf",
+			"authorisationChannels": "dev"
 		}
 	],
 	"channels":

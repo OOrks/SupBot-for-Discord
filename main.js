@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const tools = require('./tools');
 const privacy = require('./token');
-const Config = require('./config.json');
+var Config = require('./config.json')
 
 
 bot.on('ready', () => {
@@ -22,6 +22,17 @@ bot.on('message', message => {
         }
         message.channel.sendMessage("pong");
         //console.log("[LOG]Ping done");
+    }
+
+	if (message.content === prefix + "reloadconf")
+    {
+  	if(!checkAuthorisations("reloadconf",message))
+  	{
+  		return;
+  	}
+	delete require.cache[require.resolve('./config.json')]
+	  Config = require('./config.json')
+      console.log("[LOG]Configutation reloaded");
     }
 
     if (message.content === prefix + "channelid") {
