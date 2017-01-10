@@ -4,8 +4,7 @@ module.exports = {
 	{
 		var emojitxt = "";
 		if (checkCustomEmote(txt)){
-			console.log("emote detected");
-			//emojitxt = extractEmote(txt);
+			return txt;
 		}
 		else {
 			for (var x = 0; x < txt.length; x++)
@@ -30,26 +29,10 @@ module.exports = {
 		}
 		return emojitxt;
 	}
-
 };
 
 function checkCustomEmote(txt){
 	return (txt.charAt(0) == "<" && txt.charAt(txt.length-1) == ">" );
-};
-
-function extractEmote(emote){
-	var result = "";
-	var start = false;
-	for (var x = 0; x < emote.length; x++)
-	{
-		if (emote.charAt(x) == ":") {
-			start = !start;
-			result +=":"
-		} else if (start) {
-			result +=emote.charAt(x);
-		}
-	}
-	return result;
 }
 
 function convertIntToEmoji(txt){
