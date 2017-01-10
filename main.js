@@ -14,7 +14,7 @@ bot.on('message', message => {
 
     let prefix = "/";
 
-    if (message.content.startsWith(prefix) || message.author.bot) return;
+    if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     if (message.content === prefix + "ping") {
         if (!checkAuthorisations("ping", message)) {
