@@ -21,6 +21,10 @@ module.exports = {
 				else if (txt.charCodeAt(x) >= 48 && txt.charCodeAt(x) <= 57) {
 					emojitxt += convertIntToEmoji(txt.charAt(x));
 				}
+				// Check standard emote
+				else if (txt.charCodeAt(x) > 255){
+                    emojitxt += txt.charAt(x);
+                }
 				// Drop unknown char
 				else {
 					//console.log("drop");
