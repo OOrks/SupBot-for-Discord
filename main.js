@@ -19,15 +19,6 @@ bot.on('message', message => {
         return;
     }
 
-    if (message.content === prefix + "ping") {
-        message.channel.sendMessage("pong");
-        console.log("[LOG]Ping done");
-    }
-
-    if (message.content.startsWith(prefix + "emojify")) {
-        var returnedMessage = "";
-
-      
   if (message.content === prefix + "ping")
   {
 	if(!checkAuthorisations("ping",message))
@@ -74,7 +65,7 @@ bot.on('message', message => {
     message.channel.sendMessage(returnedMessage);
     console.log("[LOG]emojifying done");
   }
-});
+
 
 
 // Fonction pour checker les authorisation PAR CHANNEL
@@ -108,4 +99,3 @@ function checkAuthorisations(commandName,message)
 })
 
 bot.login(privacy.getToken());
-
