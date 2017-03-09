@@ -49,4 +49,4 @@ bot.on('message', message => {
   }
 })
 
-bot.login("MjY4MDQ1MTAxMjgzMDE2NzA2.C1VmrQ.sgEnutBXuz9kkt1fmrRGhJl0seM");
+bot.login("");
